@@ -46,41 +46,41 @@ class feature_engineer:
             X_val_scaled=self.scaler.transform(X_val_clean) 
             X_test_scaled=self.scaler.transform(X_test_clean)
         self.save_processed_data(X_train_scaled, X_val_scaled, X_test_scaled, y_train, y_val, y_test)
-        print("✅ Feature engineer
+        print("Feature engineering done")
         return X_train_scaled, X_val_scaled, X_test_scaled, y_train, y_val, y_test
     
-    def save_processed_data(self, X_train, X_val, X_test, y_train, y_val, y_test):
-        pd.DataFrame(X_train).to_csv('../data/processed/X_train.csv', index=False)
-        pd.DataFrame(X_val).to_csv('../data/processed/X_val.csv', index=False) 
-        pd.DataFrame(X_test).to_csv('../data/processed/X_test.csv', index=False)
-        y_train.to_csv('../data/processed/y_train.csv', index=False)
-        y_val.to_csv('../data/processed/y_val.csv', index=False)
+#     def save_processed_data(self, X_train, X_val, X_test, y_train, y_val, y_test):
+#         pd.DataFrame(X_train).to_csv('../data/processed/X_train.csv', index=False)
+#         pd.DataFrame(X_val).to_csv('../data/processed/X_val.csv', index=False) 
+#         pd.DataFrame(X_test).to_csv('../data/processed/X_test.csv', index=False)
+#         y_train.to_csv('../data/processed/y_train.csv', index=False)
+#         y_val.to_csv('../data/processed/y_val.csv', index=False)
         
-        if y_test is not None and len(y_test)>0:
-            y_test.to_csv('y_test.csv', index=False)
+#         if y_test is not None and len(y_test)>0:
+#             y_test.to_csv('y_test.csv', index=False)
         
-        # Save scaler and feature names
-        joblib.dump({
-            'scaler': self.scaler,
-            'feature_names': self.feature_names
-        }, MODELS_DIR / 'feature_scaler.pkl')
+#         # Save scaler and feature names
+#         joblib.dump({
+#             'scaler': self.scaler,
+#             'feature_names': self.feature_names
+#         }, MODELS_DIR / 'feature_scaler.pkl')
         
-        print("💾 Processed data saved to data/processed/")
+#         print("💾 Processed data saved to data/processed/")
 
-def main():
-    """Run feature engineering pipeline"""
-    engineer = FeatureEngineer()
-    engineer.engineer_features()
+# def main():
+#     """Run feature engineering pipeline"""
+#     engineer = FeatureEngineer()
+#     engineer.engineer_features()
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
         
     
     
 
-import pandas as pd
-import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-import joblib
-# from scripts.config import *
+# # import pandas as pd
+# # import numpy as np
+# # from sklearn.model_selection import train_test_split
+# # from sklearn.preprocessing import StandardScaler
+# # import joblib
+# # # from scripts.config import *
